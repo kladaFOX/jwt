@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 10
+  host: <%= Rails.application.credentials.config[:database][:host] %>
+  username: <%= Rails.application.credentials.config[:database][:username] %>
+  password: <%= Rails.application.credentials.config[:database][:password] %>
+
+development:
+  <<: *default
+  database: jwt_development
+
+test:
+  <<: *default
+  database: jwt_test
+
+production:
+  <<: *default
+  database: jwt_production
